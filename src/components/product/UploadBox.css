@@ -1,0 +1,13 @@
+.upload-box {
+  transition: all 0.2s ease-in-out;
+}
+
+.upload-box.active {
+  border-color: #1976d2 !important;
+  background-color: #e3f2fd !important;
+}
+
+.upload-box.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}

@@ -1,0 +1,127 @@
+Build a small internal web application using React for a 2–3 person company to manage customer product files in a structured, Google Drive–like interface.
+
+TECH STACK:
+
+* Frontend: React (functional components, hooks)
+* Storage: Firebase Storage
+* Optional: Firebase Authentication (Google login for team-only access)
+
+APP PURPOSE:
+The app acts as a simple file management system to store and organize files related to customers and their products. It must support uploading, browsing, and viewing files in a structured folder hierarchy.
+
+FOLDER STRUCTURE:
+All files must follow this logical structure:
+customers/{customerName}/{productName}/
+├── blueprint/        (stores PNG images)
+├── box-label/        (stores PDF files)
+└── product-label/    (stores PDF files)
+
+FEATURE REQUIREMENTS:
+
+1. NAVIGATION UI:
+
+* Sidebar or tree view listing:
+
+  * Customers
+  * Products under each customer
+* Clicking a product opens its detail view
+
+2. PRODUCT VIEW PAGE:
+
+* Display 3 sections (tabs or columns):
+
+  * Blueprint
+  * Box Label
+  * Product Label
+
+3. FILE DISPLAY:
+
+* Show list of files in each section
+* PNG files should display preview thumbnails
+* PDF files should show filename + open in new tab
+* Show upload date if possible
+
+4. DRAG & DROP UPLOAD:
+
+* Each section must have its own drag-and-drop upload area
+* Users can drop multiple files
+* Files are uploaded to the correct Firebase path
+* Validate file types:
+
+  * blueprint → only PNG
+  * others → only PDF
+* Show upload progress indicator
+
+5. FILE ACTIONS:
+
+* Open/download file
+* (Optional) Delete file
+* (Optional) Rename file
+
+6. CREATE STRUCTURE:
+
+* UI to:
+
+  * Create new customer
+  * Create new product under a customer
+* This can be done by creating empty placeholder entries or folders
+
+7. SEARCH (OPTIONAL BUT RECOMMENDED):
+
+* Search by:
+
+  * Customer name
+  * Product name
+
+8. AUTHENTICATION (OPTIONAL):
+
+* Use Google login via Firebase Authentication
+* Restrict access to specific email accounts
+
+9. SECURITY RULES:
+
+* Firebase Storage rules should:
+
+  * Allow read/write for authorized users
+  * Restrict file size (e.g. max 10MB)
+  * Restrict file types by folder path
+
+10. UI/UX:
+
+* Clean, minimal design (similar to Google Drive)
+* Responsive layout
+* Clear separation between sections
+* Show loading states when fetching files
+
+COMPONENT STRUCTURE:
+
+* App.jsx → main layout
+* Sidebar.jsx → customer/product navigation
+* ProductPage.jsx → main product view
+* FileSection.jsx → blueprint / box-label / product-label
+* UploadBox.jsx → drag & drop upload
+* FileList.jsx → display files
+* firebase.js → Firebase config
+
+FIREBASE USAGE:
+
+* Use Firebase Storage for file handling:
+
+  * uploadBytes()
+  * listAll()
+  * getDownloadURL()
+
+* Store files using structured paths based on customer/product/type
+
+OPTIONAL ENHANCEMENTS:
+
+* Image preview modal
+* PDF inline viewer
+* File sorting (by date/name)
+* Drag to reorder (UI only)
+* Activity log (uploads history)
+
+GOAL:
+Deliver a simple, reliable internal tool that mimics a lightweight Google Drive but enforces a strict folder structure for organizing customer product assets.
+
+The app should be easy to use, require no backend server, and be deployable as a static site.
